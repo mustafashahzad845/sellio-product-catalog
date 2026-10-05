@@ -5,22 +5,27 @@ import About from './pages/about'
 import Contact from './pages/contact'
 import style from "./style.module.css"
 import axios from 'axios'
+import ProductCard from './components/card'
 
-const [apiResponse , setApiResponse] = useState("")
 
 const App = () => {
-  useEffect( ()=>{
+const [apiResponse , setApiResponse] = useState("")
+const getData = async ()=>{
 
-  const data =  fetch("https://dummyjson.com/products/").then(res=>res.json())
-  .then((result)=>{
-    console.log(result)
-setApiResponse(data)
-  } )
-  .catch((err)=>console.log("err"))
+  const data =  await fetch("https://dummyjson.com/products/").then(res=>res.json()).products
+  console.log(data);
+  
+  // data.products.map()
 
-
-
-  } , [])
+data.map((product)=>{
+return (
+  <ProductCard product={product}/>
+  
+)
+})
+  }
+  useEffect( getData()  , [])
+  
   return (
     <>
 {/* Navbar */}
@@ -34,6 +39,8 @@ setApiResponse(data)
       <Route path="/about" element={<About />}/>
       <Route path="/contact" element={<Contact />}/>
     </Routes>
+
+
 
 
     </>
