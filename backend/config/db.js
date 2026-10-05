@@ -1,7 +1,13 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 import {MONGODB_URI} from "./env.js";
 
-const mongodbConnection = () => {
+//  const client = new MongoClient(MONGODB_URI)
+//  let db;
+//  let productCollection;
+const mongodbConnection = async () => {
+//   await client.connect()
+// db = client.db("sellio-product")
+// productCollection = db.collection("products") 
   mongoose
     .connect(MONGODB_URI)
     .then((data) => {
