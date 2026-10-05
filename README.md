@@ -1,1 +1,0 @@
-# sellio-product-catalog
