@@ -16,8 +16,19 @@ const getData = async ()=>{
   console.log(data);
   
   // data.products.map()
+} catch (error) {
+  console.log("Error");
+}
 
-data.map((product)=>{
+  }
+
+  console.log(apiResponse);
+  
+  useEffect( ()=>{
+    getData()
+  }  , [])
+  
+apiResponse.map((product)=>{
 return (
   <ProductCard product={product}/>
   
