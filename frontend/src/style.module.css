@@ -3,3 +3,9 @@ color: black;
 margin: 0 30px;
 text-decoration : underline;
 }
+.cardParent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 0;
+}

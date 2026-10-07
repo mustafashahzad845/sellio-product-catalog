@@ -6,6 +6,7 @@ import Contact from './pages/contact'
 import style from "./style.module.css"
 import axios from 'axios'
 import ProductCard from './components/card'
+import AllProducts from './components/allProducts'
 
 
 const App = () => {
@@ -29,25 +30,22 @@ try {
     getData()
   }  , [])
   
-apiResponse.map((product)=>{
-return (
-  <ProductCard product={product}/>
-  
-)
-})
-
   return (
     <>
-{/* Navbar */}
-<div >
-<Link className={style.navLinks} to={"/"}>Home Link</Link>
+
+<div>
+<Link className={style.navLinks} to={"/"}>Home</Link>
 <Link className={style.navLinks} to={"/about"}>About Link</Link>
+<Link className={style.navLinks} to={"/product"}>Product Page</Link>
 <Link className={style.navLinks} to={"/contact"}>Contact Link</Link>
 </div>
     <Routes>
       <Route path="/" element={<Home />}/>
       <Route path="/about" element={<About />}/>
       <Route path="/contact" element={<Contact />}/>
+      <Route  path='/product' 
+      element={<AllProducts apiResponse={apiResponse} />}
+      />
     </Routes>
 
 

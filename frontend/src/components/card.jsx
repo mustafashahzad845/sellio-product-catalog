@@ -124,7 +124,7 @@ const ProductCard = ({ product }) => {
             cursor: "pointer",
           }}
         >
-          Add to Cart
+          View Details
         </button>
       </div>
     </div>
