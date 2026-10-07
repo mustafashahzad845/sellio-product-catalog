@@ -9,12 +9,13 @@ import ProductCard from './components/card'
 
 
 const App = () => {
-const [apiResponse , setApiResponse] = useState("")
+const [apiResponse , setApiResponse] = useState([])
 const getData = async ()=>{
 
-  const data =  await fetch("https://dummyjson.com/products/").then(res=>res.json()).products
+try {
+  const data =  await (await axios.get("https://dummyjson.com/products/")).data.products
   console.log(data);
-  
+  setApiResponse(data)
   // data.products.map()
 } catch (error) {
   console.log("Error");
@@ -34,9 +35,7 @@ return (
   
 )
 })
-  }
-  useEffect( getData()  , [])
-  
+
   return (
     <>
 {/* Navbar */}
