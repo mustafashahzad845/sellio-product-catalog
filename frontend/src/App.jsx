@@ -6,7 +6,7 @@ import Contact from './pages/contact'
 import style from "./style.module.css"
 import axios from 'axios'
 import ProductCard from './components/card'
-import AllProducts from './components/allProducts'
+import AllProducts from './pages/allProducts'
 
 
 const App = () => {
@@ -46,6 +46,9 @@ try {
       <Route  path='/product' 
       element={<AllProducts apiResponse={apiResponse} />}
       />
+      {/* <Route  path='/product/:id' 
+      element={<AllProducts apiResponse={apiResponse} />}
+      /> */}
     </Routes>
 
 
