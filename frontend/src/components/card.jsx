@@ -1,132 +1,190 @@
+import { useNavigate, useParams } from "react-router-dom";
+
 const ProductCard = ({ product }) => {
+  const id = product?.id;
+  const Navigate = useNavigate();
+  // console.log(id);
+
+  // return (
+  //   <div
+  //     style={{
+  //       width: "300px",
+  //       border: "1px solid #ddd",
+  //       borderRadius: "12px",
+  //       overflow: "hidden",
+  //       backgroundColor: "#fff",
+  //       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+  //       fontFamily: "Arial, sans-serif",
+  //     }}
+  //   >
+  //     {/* Product Image */}
+  //     <img
+  //       src={product.thumbnail}
+  //       alt={product.title}
+  //       style={{
+  //         width: "100%",
+  //         height: "220px",
+  //         objectFit: "cover",
+  //       }}
+  //     />
+
+  //     {/* Product Content */}
+  //     <div style={{ padding: "16px" }}>
+  //       <h2
+  //         style={{
+  //           fontSize: "20px",
+  //           margin: "0 0 8px",
+  //           color: "#222",
+  //         }}
+  //       >
+  //         {product.title}
+  //       </h2>
+
+  //       <p
+  //         style={{
+  //           fontSize: "14px",
+  //           color: "#666",
+  //           lineHeight: "1.5",
+  //           marginBottom: "12px",
+  //         }}
+  //       >
+  //         {product.description}
+  //       </p>
+
+  //       <p
+  //         style={{
+  //           margin: "6px 0",
+  //           fontSize: "14px",
+  //         }}
+  //       >
+  //         <strong>Brand:</strong> {product.brand}
+  //       </p>
+
+  //       <p
+  //         style={{
+  //           margin: "6px 0",
+  //           fontSize: "14px",
+  //         }}
+  //       >
+  //         <strong>Category:</strong> {product.category}
+  //       </p>
+
+  //       <p
+  //         style={{
+  //           margin: "6px 0",
+  //           fontSize: "14px",
+  //         }}
+  //       >
+  //         <strong>Rating:</strong> ⭐ {product.rating}
+  //       </p>
+
+  //       <p
+  //         style={{
+  //           margin: "6px 0",
+  //           fontSize: "14px",
+  //         }}
+  //       >
+  //         <strong>Stock:</strong> {product.stock}
+  //       </p>
+
+  //       {/* Price */}
+  //       <div
+  //         style={{
+  //           display: "flex",
+  //           alignItems: "center",
+  //           gap: "10px",
+  //           margin: "14px 0",
+  //         }}
+  //       >
+  //         <span
+  //           style={{
+  //             fontSize: "22px",
+  //             fontWeight: "bold",
+  //             color: "#111",
+  //           }}
+  //         >
+  //           ${product.price}
+  //         </span>
+
+  //         <span
+  //           style={{
+  //             fontSize: "13px",
+  //             color: "green",
+  //             fontWeight: "bold",
+  //           }}
+  //         >
+  //           {product.discountPercentage}% OFF
+  //         </span>
+  //       </div>
+
+  //       {/* Button */}
+  //       <button
+  //         style={{
+  //           width: "100%",
+  //           padding: "10px",
+  //           border: "none",
+  //           borderRadius: "8px",
+  //           backgroundColor: "#007bff",
+  //           color: "#fff",
+  //           fontSize: "15px",
+  //           cursor: "pointer",
+  //         }}
+
+  //         onClick={
+  //            ()=>{
+  //           Navigate(`/product-details/${id}`)
+  //           }
+  //         }
+  //       >
+  //         View Details
+  //       </button>
+  //     </div>
+  //   </div>
+  // );
+
   return (
     <div
       style={{
-        width: "300px",
+        width: "250px",
+        padding: "15px",
         border: "1px solid #ddd",
-        borderRadius: "12px",
-        overflow: "hidden",
-        backgroundColor: "#fff",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-        fontFamily: "Arial, sans-serif",
+        borderRadius: "10px",
+        fontFamily: "Arial",
       }}
     >
-      {/* Product Image */}
       <img
         src={product.thumbnail}
         alt={product.title}
         style={{
           width: "100%",
-          height: "220px",
-          objectFit: "cover",
+          height: "180px",
+          objectFit: "contain",
         }}
       />
 
-      {/* Product Content */}
-      <div style={{ padding: "16px" }}>
-        <h2
-          style={{
-            fontSize: "20px",
-            margin: "0 0 8px",
-            color: "#222",
-          }}
-        >
-          {product.title}
-        </h2>
+      <h3>{product.title}</h3>
 
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#666",
-            lineHeight: "1.5",
-            marginBottom: "12px",
-          }}
-        >
-          {product.description}
-        </p>
+      <p>Price: ${product.price}</p>
 
-        <p
-          style={{
-            margin: "6px 0",
-            fontSize: "14px",
-          }}
-        >
-          <strong>Brand:</strong> {product.brand}
-        </p>
+      <p>Rating: ⭐ {product.rating}</p>
 
-        <p
-          style={{
-            margin: "6px 0",
-            fontSize: "14px",
-          }}
-        >
-          <strong>Category:</strong> {product.category}
-        </p>
+      <button
+        style={{
+          width: "100%",
+          padding: "10px",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
 
-        <p
-          style={{
-            margin: "6px 0",
-            fontSize: "14px",
-          }}
-        >
-          <strong>Rating:</strong> ⭐ {product.rating}
-        </p>
-
-        <p
-          style={{
-            margin: "6px 0",
-            fontSize: "14px",
-          }}
-        >
-          <strong>Stock:</strong> {product.stock}
-        </p>
-
-        {/* Price */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            margin: "14px 0",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "22px",
-              fontWeight: "bold",
-              color: "#111",
-            }}
-          >
-            ${product.price}
-          </span>
-
-          <span
-            style={{
-              fontSize: "13px",
-              color: "green",
-              fontWeight: "bold",
-            }}
-          >
-            {product.discountPercentage}% OFF
-          </span>
-        </div>
-
-        {/* Button */}
-        <button
-          style={{
-            width: "100%",
-            padding: "10px",
-            border: "none",
-            borderRadius: "8px",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            fontSize: "15px",
-            cursor: "pointer",
-          }}
-        >
-          View Details
-        </button>
-      </div>
+        onClick={ () => {
+          Navigate(`/product-details/${id}`);
+        }}
+      >
+        View Details
+      </button>
     </div>
   );
 };

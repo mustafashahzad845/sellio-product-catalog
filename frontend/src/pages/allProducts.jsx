@@ -4,9 +4,9 @@ import style from "../style.module.css"
 import ProductCard from '../components/card'
 
 const AllProducts = ({apiResponse}) => {
-  const param = useParams()
-  const paramId = +param.id
-  console.log(paramId);
+  // const param = useParams()
+  // const paramId = +param.id
+  // console.log(paramId);
   
   return (
 <div className={style.cardParent}>
