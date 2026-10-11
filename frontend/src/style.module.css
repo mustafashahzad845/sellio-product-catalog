@@ -9,3 +9,11 @@ text-decoration : underline;
     gap: 30px;
     margin: 20px 0;
 }
+.inputContainer{
+    width: 80%;
+    margin: 20px 40px;
+    padding: 12px 8px;
+    font-size: 16px;
+    border-radius: 12px;
+    /* outline: none; */
+}
