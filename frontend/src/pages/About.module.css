@@ -1,0 +1,168 @@
+/* ---------- Page header (quiet) ---------- */
+.pageHeader {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.pageHeaderInner {
+  max-width: 720px;
+  padding-block: clamp(44px, 7vw, 76px);
+}
+
+.pageHeaderTitle {
+  font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+  letter-spacing: -0.02em;
+}
+
+.pageHeaderSub {
+  color: var(--color-text-soft);
+  font-size: clamp(1rem, 1.5vw, 1.08rem);
+  margin-top: 14px;
+  max-width: 56ch;
+}
+
+/* ---------- Story ---------- */
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.storyLead {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink-800);
+}
+
+.storyText {
+  color: var(--color-text-soft);
+  margin-top: 14px;
+}
+
+.storyList {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.storyList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--ink-700);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.storyList svg {
+  width: 19px;
+  height: 19px;
+  color: var(--brand-600);
+  flex: none;
+  margin-top: 2px;
+}
+
+/* Story fact card */
+.storyCard {
+  background: var(--paper-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(26px, 4vw, 36px);
+}
+
+.storyCardTitle {
+  font-size: 1.15rem;
+}
+
+.storyCardText {
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.storyDivider {
+  height: 1px;
+  background: var(--color-border);
+  margin-block: 18px;
+}
+
+.storyCardRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-700);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.storyCardRow svg {
+  width: 17px;
+  height: 17px;
+  color: var(--brand-600);
+  flex: none;
+}
+
+.storyCardRow + .storyCardRow {
+  margin-top: 12px;
+}
+
+/* ---------- Values ---------- */
+.values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.valueCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.valueCard:hover {
+  border-color: var(--line-strong);
+}
+
+.valueIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--paper-soft);
+  border: 1px solid var(--color-border);
+  color: var(--brand-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valueIcon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.valueTitle {
+  margin-top: 16px;
+  font-size: 1.02rem;
+}
+
+.valueText {
+  color: var(--color-text-soft);
+  font-size: 0.92rem;
+  margin-top: 8px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .story { grid-template-columns: minmax(0, 1fr); }
+  .values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .values { grid-template-columns: minmax(0, 1fr); }
+}
