@@ -100,9 +100,8 @@ const Contact = () => {
                     </svg>
                   </span>
                   <div>
-                    <b>Call or email</b>
+                    <b>Call us</b>
                     <span>+92 300 000 0000</span>
-                    <span>hello@sellio.store</span>
                   </div>
                 </div>
                 <div className={style.infoRow}>

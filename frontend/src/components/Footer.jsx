@@ -101,7 +101,6 @@ const Footer = () => {
         <div className={style.col}>
           <h4 className={style.colTitle}>Help</h4>
           <ul className={style.list}>
-            <li><a href="mailto:hello@sellio.store">hello@sellio.store</a></li>
             <li><span className={style.plain}>Mon–Sat, 9am–6pm</span></li>
             <li><span className={style.plain}>Live chat coming soon</span></li>
           </ul>
