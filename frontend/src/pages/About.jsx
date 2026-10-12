@@ -8,13 +8,11 @@ const About = () => {
       {/* Page header */}
       <section className={style.pageHeader}>
         <div className={`container ${style.pageHeaderInner}`}>
-          <span className="eyebrow">About Sellio</span>
-          <h1 className={style.pageHeaderTitle}>
-            A small store with a clear idea.
-          </h1>
+          <span className="eyebrow">About</span>
+          <h1 className={style.pageHeaderTitle}>About Sellio</h1>
           <p className={style.pageHeaderSub}>
-            Sellio started as a simple product catalog — no fluff, no endless
-            pop-ups. Just a clean place to browse, compare and find what fits.
+            A small store with a clear idea — no fluff, no endless pop-ups.
+            Just a clean place to browse, compare and find what fits.
           </p>
         </div>
       </section>
