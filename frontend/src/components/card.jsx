@@ -1,191 +1,65 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import style from "./card.module.css";
 
 const ProductCard = ({ product }) => {
   const id = product?.id;
-  const Navigate = useNavigate();
-  // console.log(id);
+  const discount = product?.discountPercentage || 0;
+  const wasPrice = discount > 0
+    ? (product?.price / (1 - discount / 100)).toFixed(2)
+    : null;
 
-  // return (
-  //   <div
-  //     style={{
-  //       width: "300px",
-  //       border: "1px solid #ddd",
-  //       borderRadius: "12px",
-  //       overflow: "hidden",
-  //       backgroundColor: "#fff",
-  //       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-  //       fontFamily: "Arial, sans-serif",
-  //     }}
-  //   >
-  //     {/* Product Image */}
-  //     <img
-  //       src={product.thumbnail}
-  //       alt={product.title}
-  //       style={{
-  //         width: "100%",
-  //         height: "220px",
-  //         objectFit: "cover",
-  //       }}
-  //     />
-
-  //     {/* Product Content */}
-  //     <div style={{ padding: "16px" }}>
-  //       <h2
-  //         style={{
-  //           fontSize: "20px",
-  //           margin: "0 0 8px",
-  //           color: "#222",
-  //         }}
-  //       >
-  //         {product.title}
-  //       </h2>
-
-  //       <p
-  //         style={{
-  //           fontSize: "14px",
-  //           color: "#666",
-  //           lineHeight: "1.5",
-  //           marginBottom: "12px",
-  //         }}
-  //       >
-  //         {product.description}
-  //       </p>
-
-  //       <p
-  //         style={{
-  //           margin: "6px 0",
-  //           fontSize: "14px",
-  //         }}
-  //       >
-  //         <strong>Brand:</strong> {product.brand}
-  //       </p>
-
-  //       <p
-  //         style={{
-  //           margin: "6px 0",
-  //           fontSize: "14px",
-  //         }}
-  //       >
-  //         <strong>Category:</strong> {product.category}
-  //       </p>
-
-  //       <p
-  //         style={{
-  //           margin: "6px 0",
-  //           fontSize: "14px",
-  //         }}
-  //       >
-  //         <strong>Rating:</strong> ⭐ {product.rating}
-  //       </p>
-
-  //       <p
-  //         style={{
-  //           margin: "6px 0",
-  //           fontSize: "14px",
-  //         }}
-  //       >
-  //         <strong>Stock:</strong> {product.stock}
-  //       </p>
-
-  //       {/* Price */}
-  //       <div
-  //         style={{
-  //           display: "flex",
-  //           alignItems: "center",
-  //           gap: "10px",
-  //           margin: "14px 0",
-  //         }}
-  //       >
-  //         <span
-  //           style={{
-  //             fontSize: "22px",
-  //             fontWeight: "bold",
-  //             color: "#111",
-  //           }}
-  //         >
-  //           ${product.price}
-  //         </span>
-
-  //         <span
-  //           style={{
-  //             fontSize: "13px",
-  //             color: "green",
-  //             fontWeight: "bold",
-  //           }}
-  //         >
-  //           {product.discountPercentage}% OFF
-  //         </span>
-  //       </div>
-
-  //       {/* Button */}
-  //       <button
-  //         style={{
-  //           width: "100%",
-  //           padding: "10px",
-  //           border: "none",
-  //           borderRadius: "8px",
-  //           backgroundColor: "#007bff",
-  //           color: "#fff",
-  //           fontSize: "15px",
-  //           cursor: "pointer",
-  //         }}
-
-  //         onClick={
-  //            ()=>{
-  //           Navigate(`/product-details/${id}`)
-  //           }
-  //         }
-  //       >
-  //         View Details
-  //       </button>
-  //     </div>
-  //   </div>
-  // );
+  const rating = Math.round(product?.rating || 0);
+  const inStock = (product?.stock || 0) > 0;
 
   return (
-    <div
-      style={{
-        width: "250px",
-        padding: "15px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        fontFamily: "Arial",
-      }}
-    >
-      <img
-        src={product.thumbnail}
-        alt={product.title}
-        style={{
-          width: "100%",
-          height: "180px",
-          objectFit: "contain",
-        }}
-      />
+    <Link to={`/product-details/${id}`} className={style.card}>
+      <div className={style.media}>
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          loading="lazy"
+          className={style.thumb}
+        />
+        {discount > 0 && (
+          <span className={style.badge}>-{Math.round(discount)}%</span>
+        )}
+      </div>
 
-      <h3>{product.title}</h3>
+      <div className={style.body}>
+        <span className={style.category}>{product.category}</span>
+        <h3 className={style.title}>{product.title}</h3>
 
-      <p>Price: ${product.price}</p>
+        <div className={style.rating} aria-label={`Rating ${product.rating} out of 5`}>
+          <span className={style.stars} aria-hidden="true">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <svg
+                key={i}
+                viewBox="0 0 24 24"
+                className={`${style.star} ${i < rating ? style.starOn : ""}`}
+              >
+                <path d="M12 3.6l2.5 5.1 5.6.8-4 4 .9 5.6-5-2.6-5 2.6.9-5.6-4-4 5.6-.8L12 3.6Z" />
+              </svg>
+            ))}
+          </span>
+          <span className={style.ratingValue}>{product.rating}</span>
+          <span className={style.stock} aria-hidden="true">
+            {inStock ? "In stock" : "Out of stock"}
+          </span>
+        </div>
 
-      <p>Rating: ⭐ {product.rating}</p>
+        <div className={style.priceRow}>
+          <span className={style.price}>${product.price}</span>
+          {wasPrice && <span className={style.was}>${wasPrice}</span>}
+        </div>
 
-      <button
-        style={{
-          width: "100%",
-          padding: "10px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-
-        onClick={ () => {
-          Navigate(`/product-details/${id}`);
-        }}
-      >
-        View Details
-      </button>
-    </div>
+        <span className={style.view}>
+          View details
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </div>
+    </Link>
   );
 };
 
