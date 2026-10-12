@@ -30,6 +30,20 @@ const Navbar = () => {
     }
   };
 
+  // Send shoppers to the catalog and land them at the very top of the page.
+  const goToCatalogTop = () => {
+    closeMenu();
+
+    const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (location.pathname === "/product") {
+      scrollToTop();
+    } else {
+      navigate("/product");
+      setTimeout(scrollToTop, 80);
+    }
+  };
+
   return (
     <header className={style.header}>
       {/* Announcement strip */}
@@ -124,7 +138,14 @@ const Navbar = () => {
                 />
               </svg>
             </Link>
-            <Link to="/product" className={`btn btn--primary btn--sm ${style.cta}`}>
+            <Link
+              to="/product"
+              className={`btn btn--primary btn--sm ${style.cta}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goToCatalogTop();
+              }}
+            >
               Shop now
             </Link>
             <button
@@ -162,7 +183,14 @@ const Navbar = () => {
             <NavLink to="/contact" className={style.mobileLink}>
               Contact
             </NavLink>
-            <NavLink to="/product" className={`btn btn--primary ${style.mobileCta}`}>
+            <NavLink
+              to="/product"
+              className={`btn btn--primary ${style.mobileCta}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goToCatalogTop();
+              }}
+            >
               Shop now
             </NavLink>
           </nav>
