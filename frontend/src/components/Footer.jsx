@@ -55,37 +55,19 @@ const Footer = () => {
             quickly, and find exactly what you&apos;re after.
           </p>
           <div className={style.socials}>
-            <a
-              href="https://instagram.com/sellio.store"
-              target="_blank"
-              rel="noreferrer"
-              className={style.social}
-              aria-label="Sellio on Instagram"
-            >
+            <a href="#" className={style.social} aria-label="Sellio on Instagram">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.7" />
                 <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.7" />
                 <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
               </svg>
             </a>
-            <a
-              href="https://twitter.com/sellio.store"
-              target="_blank"
-              rel="noreferrer"
-              className={style.social}
-              aria-label="Sellio on X"
-            >
+            <a href="#" className={style.social} aria-label="Sellio on X">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.7 3H21l-7.2 8.2L22.2 21h-6.6l-5.2-6.8L4.5 21H1.2l7.7-8.8L1.8 3h6.8l4.7 6.2L17.7 3Zm-1.2 16h1.8L7.6 4.9H5.7L16.5 19Z" />
               </svg>
             </a>
-            <a
-              href="https://facebook.com/sellio.store"
-              target="_blank"
-              rel="noreferrer"
-              className={style.social}
-              aria-label="Sellio on Facebook"
-            >
+            <a href="#" className={style.social} aria-label="Sellio on Facebook">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2.1-.1-2.1 0-3.6 1.3-3.6 3.7V11H8.2v3h2.5v7h2.8Z" />
               </svg>
