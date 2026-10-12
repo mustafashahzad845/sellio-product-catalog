@@ -4,18 +4,6 @@ import style from "./Contact.module.css";
 const Contact = () => {
   return (
     <>
-      {/* Page header */}
-      <section className={style.pageHeader}>
-        <div className={`container ${style.pageHeaderInner}`}>
-          <span className="eyebrow">Contact</span>
-          <h1 className={style.pageHeaderTitle}>Get in touch</h1>
-          <p className={style.pageHeaderSub}>
-            Questions about a product, an order or the catalog in general?
-            Write to us below — you&apos;ll get a straight answer.
-          </p>
-        </div>
-      </section>
-
       <section className="section">
         <div className="container">
           <div className={style.grid}>
