@@ -149,7 +149,7 @@ const ProductDetailsCard = ({ product }) => {
           </div>
 
           <div className={style.ctaRow}>
-            <button type="button" className={`btn btn--blue btn--lg ${style.ctaBtn}`}>
+            <button type="button" className={`btn btn--primary btn--lg ${style.ctaBtn}`}>
               Add to cart
             </button>
             <button type="button" className={`btn btn--secondary btn--lg ${style.ctaBtn}`}>
