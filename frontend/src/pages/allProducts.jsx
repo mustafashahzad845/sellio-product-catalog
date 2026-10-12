@@ -5,32 +5,22 @@ import ProductCard from '../components/card'
 
 const AllProducts = ({apiResponse}) => {
   const [searchVal , setSearchVal] = useState("")
+  const [searchSubmit , setSearchSumbit] = useState("")
+  // let filterData;
   // const param = useParams()
   // const paramId = +param.id
   // console.log(paramId);
   const searchHandler = (event)=>{
 event.preventDefault()
+searchVal.length < 3 ?  alert("") :  null
+setSearchSumbit(searchVal.toLowerCase())
 
-const filterData = apiResponse.filter((product)=>{
- 
- if(product.title.trim().toLowerCase().includes(searchVal.toLowerCase())){
-return product
- }
-    
-})
 
-if(filterData.length > 0){
-filterData.map(
-  (product)=>{
-  return (
-<ProductCard  key={product.id}   product={product}/>
-  ) 
-    
-  }
-)
-}
 
-console.log(filterData , "filterData");
+
+
+
+// console.log(filterData , "filterData");
 
 // apiResponse.length > 0 ? apiResponse.map((product)=>{
 
@@ -59,6 +49,15 @@ console.log(filterData , "filterData");
 //   }) : null
 
   }
+
+
+  const filterData = apiResponse.filter((product)=>{
+ const productTitle = product.title.trim().toLowerCase()
+ if(productTitle.includes(searchSubmit)){
+return product
+ }
+    
+})
   
   return (
 <>
@@ -72,8 +71,7 @@ console.log(filterData , "filterData");
     
 <div className={style.cardParent}>
   {
-    
-  apiResponse.length > 0 ? apiResponse.map((product)=>{
+    !searchSubmit.trim()  && apiResponse.length > 0 ? apiResponse.map((product)=>{
 
 // console.log(product.title.trim());
 // console.log(searchVal);
@@ -88,7 +86,17 @@ console.log(filterData , "filterData");
 return (
   <ProductCard  key={product.id}   product={product}/>
 )
-  }) : null
+  }) :  filterData.length > 0 ? filterData.map( (product)=>{
+return (
+  <ProductCard  key={product.id}   product={product}/>
+)
+  } ) : searchSubmit.length > 3 ?  (
+    <h1>Product Not Found</h1>
+  ) : null
+
+
+
+
 }
 </div>
 </>
