@@ -288,6 +288,16 @@ textarea {
   color: var(--accent-700);
 }
 
+.btn--blue {
+  background: var(--blue-600);
+  color: #fff;
+}
+
+.btn--blue:hover {
+  background: var(--blue-700);
+  color: #fff;
+}
+
 .btn--lg {
   font-size: 1.05rem;
   padding: 16px 28px;
