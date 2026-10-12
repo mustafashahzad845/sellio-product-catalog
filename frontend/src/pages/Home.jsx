@@ -133,6 +133,24 @@ const Home = ({ apiResponse = [] }) => {
           )}
         </div>
       </section>
+
+      {/* CTA band */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className={style.ctaBand}>
+            <div>
+              <h2 className={style.ctaTitle}>Ready to browse the catalog?</h2>
+              <p className={style.ctaSub}>
+                Search by name, compare details and check every product fact
+                before you decide.
+              </p>
+            </div>
+            <Link to="/product" className="btn btn--primary btn--lg">
+              Browse products
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
