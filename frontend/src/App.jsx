@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import About from './pages/about'
 import Contact from './pages/contact'
-import style from "./style.module.css"
 import axios from 'axios'
-import ProductCard from './components/card'
 import AllProducts from './pages/allProducts'
 import ProductDetails from './pages/productDetails'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 
 const App = () => {
@@ -34,14 +34,10 @@ try {
   return (
     <>
 
-<div>
-<Link className={style.navLinks} to={"/"}>Home</Link>
-<Link className={style.navLinks} to={"/about"}>About Link</Link>
-<Link className={style.navLinks} to={"/product"}>Product Page</Link>
-<Link className={style.navLinks} to={"/contact"}>Contact Link</Link>
-</div>
+    <Navbar />
+
     <Routes>
-      <Route path="/" element={<Home />}/>
+      <Route path="/" element={<Home apiResponse={apiResponse} />}/>
       <Route path="/about" element={<About />}/>
       <Route path="/contact" element={<Contact />}/>
       <Route  path='/product' 
@@ -53,13 +49,9 @@ try {
       /> */}
     </Routes>
 
-
-
+    <Footer />
 
     </>
-
-
-
   )
 }
 
