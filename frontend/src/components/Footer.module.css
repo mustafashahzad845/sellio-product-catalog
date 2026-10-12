@@ -45,6 +45,7 @@
 .newsInput:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+  border-color: var(--color-focus);
 }
 
 .newsInput::placeholder {

@@ -59,7 +59,7 @@
   --color-link:         var(--accent-600);
   --color-danger:       var(--danger-600);
   --color-rating:       var(--amber-500);
-  --color-focus:        var(--accent-600);
+  --color-focus:        var(--brand-600);
 
   /* ---- Typography ---- */
   --font-display: "Rubik", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -162,7 +162,8 @@ textarea {
 :focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
-  border-radius: 4px;
+  /* No border-radius override: the focus ring follows each element's own
+     radius so rounded fields don't snap to a sharper corner on focus. */
 }
 
 .sr-only {
