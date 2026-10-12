@@ -5,18 +5,6 @@ import style from "./About.module.css";
 const About = () => {
   return (
     <>
-      {/* Page header */}
-      <section className={style.pageHeader}>
-        <div className={`container ${style.pageHeaderInner}`}>
-          <span className="eyebrow">About</span>
-          <h1 className={style.pageHeaderTitle}>About Sellio</h1>
-          <p className={style.pageHeaderSub}>
-            A small store with a clear idea — no fluff, no endless pop-ups.
-            Just a clean place to browse, compare and find what fits.
-          </p>
-        </div>
-      </section>
-
       {/* Story */}
       <section className="section">
         <div className="container">
