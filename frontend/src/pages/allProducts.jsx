@@ -27,7 +27,7 @@ return product
 
 <section className={`section ${style.catalogBody}`}>
   <div className="container">
-    <div className={style.toolbar}>
+    <div className={style.toolbar} id="catalog-search">
       <div className={style.searchBox}>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />

@@ -1,11 +1,34 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import style from "./Navbar.module.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const closeMenu = () => setMenuOpen(false);
+
+  // Jump to the catalog search toolbar, scrolling smoothly when already there
+  // and navigating first when the user is on another page.
+  const goToCatalogSearch = () => {
+    closeMenu();
+
+    const scrollToSearch = () => {
+      const target = document.getElementById("catalog-search");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    if (location.pathname === "/product") {
+      scrollToSearch();
+    } else {
+      navigate("/product");
+      // Wait for the catalog page to mount before scrolling to the toolbar.
+      setTimeout(scrollToSearch, 80);
+    }
+  };
 
   return (
     <header className={style.header}>
@@ -86,6 +109,10 @@ const Navbar = () => {
               className={style.iconBtn}
               aria-label="Search products"
               title="Search products"
+              onClick={(e) => {
+                e.preventDefault();
+                goToCatalogSearch();
+              }}
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
