@@ -25,7 +25,7 @@ return product
   </div>
 </section>
 
-<section className="section" style={{ paddingTop: 0 }}>
+<section className={`section ${style.catalogBody}`}>
   <div className="container">
     <div className={style.toolbar}>
       <div className={style.searchBox}>

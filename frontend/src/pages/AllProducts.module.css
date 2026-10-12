@@ -21,6 +21,13 @@
   max-width: 56ch;
 }
 
+/* ---------- Body ---------- */
+.catalogBody {
+  /* Keep breathing room below the header rule so the search bar never sits
+     flush against the divider line. */
+  padding-top: clamp(32px, 5vw, 52px);
+}
+
 /* ---------- Toolbar ---------- */
 .toolbar {
   display: flex;
