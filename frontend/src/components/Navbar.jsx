@@ -9,6 +9,24 @@ const Navbar = () => {
 
   const closeMenu = () => setMenuOpen(false);
 
+  // Lock page scroll and let Escape dismiss the drawer while it is open.
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
+
   // Jump to the catalog search toolbar, scrolling smoothly when already there
   // and navigating first when the user is on another page.
   const goToCatalogSearch = () => {
@@ -163,38 +181,59 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile navigation */}
-        {menuOpen && (
-          <nav
-            id="mobile-menu"
-            className={style.mobileNav}
-            aria-label="Mobile"
-            onClick={closeMenu}
-          >
-            <NavLink to="/" end className={style.mobileLink}>
-              Home
-            </NavLink>
-            <NavLink to="/product" className={style.mobileLink}>
-              Products
-            </NavLink>
-            <NavLink to="/about" className={style.mobileLink}>
-              About
-            </NavLink>
-            <NavLink to="/contact" className={style.mobileLink}>
-              Contact
-            </NavLink>
-            <NavLink
-              to="/product"
-              className={`btn btn--primary ${style.mobileCta}`}
-              onClick={(e) => {
-                e.preventDefault();
-                goToCatalogTop();
-              }}
+        {/* Mobile navigation — drawer that slides in from the right */}
+        <div
+          className={`${style.backdrop} ${menuOpen ? style.backdropOpen : ""}`}
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+        <nav
+          id="mobile-menu"
+          className={`${style.mobileNav} ${menuOpen ? style.mobileNavOpen : ""}`}
+          aria-label="Mobile"
+          inert={!menuOpen}
+        >
+          <div className={style.mobileNavHead}>
+            <span className={style.mobileNavTitle}>Menu</span>
+            <button
+              type="button"
+              className={style.mobileClose}
+              aria-label="Close menu"
+              onClick={closeMenu}
             >
-              Shop now
-            </NavLink>
-          </nav>
-        )}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="m6 6 12 12M18 6 6 18"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <NavLink to="/" end className={style.mobileLink} onClick={closeMenu}>
+            Home
+          </NavLink>
+          <NavLink to="/product" className={style.mobileLink} onClick={closeMenu}>
+            Products
+          </NavLink>
+          <NavLink to="/about" className={style.mobileLink} onClick={closeMenu}>
+            About
+          </NavLink>
+          <NavLink to="/contact" className={style.mobileLink} onClick={closeMenu}>
+            Contact
+          </NavLink>
+          <NavLink
+            to="/product"
+            className={`btn btn--primary ${style.mobileCta}`}
+            onClick={(e) => {
+              e.preventDefault();
+              goToCatalogTop();
+            }}
+          >
+            Shop now
+          </NavLink>
+        </nav>
       </div>
     </header>
   );
